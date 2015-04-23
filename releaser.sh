@@ -6,9 +6,6 @@ git pull origin develop
 git co master
 git pull origin master
 
-
-git merge develop
-
 TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
 CURRENT_NUMBER=`echo $TAG | grep -o "v[0-9]*" | grep -oE "[0-9]+"`
 NEXT=$(($CURRENT_NUMBER+1))
