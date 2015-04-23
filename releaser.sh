@@ -10,11 +10,10 @@ git pull origin master
 git merge develop
 
 TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
-NUMBER=`echo $TAG | grep -o "v[0-9]*" | grep -oE "[0-9]+"`
-NEXT=$(($NUMBER+1))
+CURRENT_NUMBER=`echo $TAG | grep -o "v[0-9]*" | grep -oE "[0-9]+"`
+NEXT=$(($CURRENT_NUMBER+1))
 RELEASEDATE=$(date +"%d/%m %Y %H:%M")
-NUMBER=4
-NOTES=`git log v$NUMBER..HEAD --pretty=format:'* %s' --no-merges`
+NOTES=`git log v$CURRENT_NUMBER..HEAD --pretty=format:'* %s' --no-merges`
 git tag -a v$NEXT -m -e "Release v$NEXT
 $RELEASEDATE
 
