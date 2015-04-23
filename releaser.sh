@@ -14,10 +14,14 @@ CURRENT_NUMBER=`echo $TAG | grep -o "v[0-9]*" | grep -oE "[0-9]+"`
 NEXT=$(($CURRENT_NUMBER+1))
 RELEASEDATE=$(date +"%d/%m %Y %H:%M")
 NOTES=`git log v$CURRENT_NUMBER..HEAD --pretty=format:'* %s' --no-merges`
-git tag -a v$NEXT -m -e "Release v$NEXT
+echo "Release v$NEXT
 $RELEASEDATE
 
-$NOTES"
+$NOTES
+" >> CHANGELOG.md
+$EDITOR CHANGELOG.md
+
+git tag -a --file=CHANGELOG.md
 
 git push origin master
 git push --tags
