@@ -15,7 +15,7 @@ NEXT=$(($NUMBER+1))
 RELEASEDATE=$(date +"%d/%m %Y %H:%M")
 NUMBER=4
 NOTES=`git log v$NUMBER..HEAD --pretty=format:'* %s' --no-merges`
-git tag -a v$NEXT -m "Release v$NEXT
+git tag -a v$NEXT -m -e "Release v$NEXT
 $RELEASEDATE
 
 $NOTES"
