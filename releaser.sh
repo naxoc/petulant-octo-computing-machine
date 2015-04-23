@@ -18,10 +18,10 @@ echo "Release v$NEXT
 $RELEASEDATE
 
 $NOTES
-" >> CHANGELOG.md
+" > CHANGELOG.md
 $EDITOR CHANGELOG.md
 
-git tag -a --file=CHANGELOG.md
+git tag -a v$NEXT -F=CHANGELOG.md
 
 git push origin master
 git push --tags
