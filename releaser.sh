@@ -12,7 +12,7 @@ NUMBER=`echo $TAG | grep -o "v[0-9]*" | grep -oE "[0-9]+"`
 NEXT=$(($NUMBER+1))
 RELEASEDATE=$(date +"%d/%m %Y %H:%M")
 
-NOTES=`git log --pretty=format:'* %s' --no-merges`
+NOTES=`git log v$NUMBER..HEAD --pretty=format:'* %s' --no-merges`
 git merge develop --no-ff -e -m "Release v$NEXT
 $RELEASEDATE
 
